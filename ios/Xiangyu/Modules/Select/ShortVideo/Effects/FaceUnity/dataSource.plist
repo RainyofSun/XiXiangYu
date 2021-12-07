@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>itemName</key>
+		<string>美颜</string>
+		<key>maxFace</key>
+		<integer>4</integer>
+		<key>enble</key>
+		<false/>
+		<key>itemType</key>
+		<integer>0</integer>
+		<key>modules</key>
+		<array>
+			<integer>1</integer>
+		</array>
+		<key>items</key>
+		<array/>
+	</dict>
+</array>
+</plist>

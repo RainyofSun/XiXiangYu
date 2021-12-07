@@ -1,0 +1,75 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+
+install! 'cocoapods', :disable_input_output_paths => true 
+target 'Xiangyu' do
+  project 'Xiangyu',
+    'DevDebug' => :debug,
+    'DevRelease' => :release,
+    'UATDebug' => :debug,
+    'UATRelease' => :release,
+    'ProDebug' => :debug,
+    'ProRelease' => :release
+    
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+  #use_frameworks! :linkage => :static
+  pod 'MJRefresh'
+  pod 'YYCategories'
+  pod 'Masonry'
+  pod 'YYText'
+#  pod 'YBImageBrowser'
+  pod 'CYLTabBarController'
+  pod 'IQKeyboardManager'
+  pod 'AFNetworking'
+  pod 'KVOController'
+  pod 'AMapLocation-NO-IDFA'
+  pod 'AMapSearch-NO-IDFA'
+  # Add the pod for SVGKit
+  #pod 'SVGKit','~>2.1.1'
+  pod 'FMDB'
+  pod 'YYModel'
+  pod 'TXIMSDK_TUIKit_iOS_Professional', :path => "../TXIMSDK_TUIKit_iOS_Professional"
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'PLShortVideoKit'
+#, :podspec => "https://raw.githubusercontent.com/pili-engineering/PLShortVideoKit/master/PLShortVideoKit-Basic.podspec"
+
+  pod 'FLAnimatedImage', '1.0.12'
+  pod 'SDCycleScrollView','~> 1.75'
+  pod 'UMCShare/UI'
+  pod 'UMCShare/Social/ReducedWeChat'
+  pod 'UMCShare/Social/ReducedQQ'
+  pod 'UMCShare/Social/ReducedSina'
+#  pod 'lottie-ios', '2.5.3'
+  pod 'GKNavigationBarViewController','~>3.0.2'
+  pod 'LBXPermission/Base'
+  pod 'LBXPermission/Camera'
+  pod 'LBXPermission/Photo'
+  pod 'LBXPermission/Contact'
+  pod 'LBXPermission/Location'
+  pod 'Nama', '6.4.1'
+  pod 'JGProgressHUD'
+  pod 'MMMaterialDesignSpinner'
+  pod 'TZImagePickerController'
+  
+  pod 'SVGAPlayer', '~> 2.3'
+  pod 'JCore'
+  pod 'JVerification'
+  pod 'JPush'
+  pod 'JShare'
+  pod 'AlipaySDK-iOS'
+  pod 'WechatOpenSDK'
+  pod 'BaiduMobStatCodeless'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+  
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
+end
+

@@ -1,0 +1,128 @@
+//
+//  XYAddTopicViewController.m
+//  Xiangyu
+//
+//  Created by Kang on 2021/7/3.
+//
+//------made in china-------
+/**   The code comes frome breakfly
+ *
+ *       ┏┓　　 ┏┓
+ *     ┏━┛┻━━━━┛┻┓
+ * 　　┃　  　━　 ┃
+ * 　　┃ 　 ^    ^ ┃
+ * 　　┃　　　 ┻　 ┃
+ * 　　┗━━━━━━━━━┛
+ *
+ * --------萌萌哒-------
+ */
+#import "XYAddTopicViewController.h"
+#import "XYTopicTableViewCell.h"
+#import "XYRefreshHeader.h"
+#import "XYRefreshFooter.h"
+#import "XYPlatSubjectGetListAPI.h"
+@interface XYAddTopicViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *tableView;
+
+@property(nonatomic,assign)NSInteger page;
+
+@property(nonatomic,strong)NSMutableArray *dataSource;
+@end
+
+@implementation XYAddTopicViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self newNav];
+    [self newView];
+    [self reshData];
+}
+#pragma mark - 网络请求
+-(void)reshData{
+  self.page = 0;
+  [self getList];
+}
+-(void)getList{
+  self.page ++;
+  XYPlatSubjectGetListAPI *api = [[XYPlatSubjectGetListAPI alloc]initWithPage:self.page];
+  @weakify(self);
+  api.filterCompletionHandler = ^(id  _Nullable data, XYError * _Nullable error) {
+    //XYHiddenLoading;
+    @strongify(self);
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    if (self.page == 1) {
+      [self.dataSource removeAllObjects];
+    }
+    XYTopicListModel *model = [XYTopicListModel yy_modelWithJSON:data];
+    if (model.list.count) {
+      [self.dataSource addObjectsFromArray:model.list];
+    }
+    [self.tableView reloadData];
+  };
+  [api start];
+}
+#pragma mark - 界面布局
+-(void)newView{
+  self.view.backgroundColor = ColorHex(XYThemeColor_F);
+
+  [self.view addSubview:self.tableView];
+  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.leading.bottom.trailing.equalTo(self.view);
+    make.top.equalTo(self.view).offset(NAVBAR_HEIGHT);
+  }];
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  return self.dataSource.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+  XYTopicTableViewCell *cell =[XYTopicTableViewCell cellWithTableView:tableView indexPath:indexPath];
+  cell.model = [self.dataSource objectAtIndex:indexPath.row];
+  return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  if (self.block) {
+    self.block([self.dataSource objectAtIndex:indexPath.row]);
+  }
+  [self.navigationController popViewControllerAnimated:YES];
+}
+-(UITableView *)tableView{
+  if (!_tableView) {
+    _tableView = [LSHControl createTableViewWithFrame:self.view.bounds style:UITableViewStylePlain dataSource:self delegate:self];
+    _tableView.estimatedRowHeight = AutoSize(152);
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    @weakify(self);
+    _tableView.mj_header = [XYRefreshHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+      [self reshData];
+    }];
+    _tableView.mj_footer = [XYRefreshFooter footerWithRefreshingBlock:^{
+      @strongify(self);
+      [self getList];
+    }];
+  }
+  return _tableView;
+}
+
+-(NSMutableArray *)dataSource{
+  if (!_dataSource) {
+    _dataSource = [NSMutableArray new];
+  }
+  return _dataSource;
+}
+#pragma mark - 导航
+-(void)newNav{
+  self.gk_navTitle = @"添加话题";
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

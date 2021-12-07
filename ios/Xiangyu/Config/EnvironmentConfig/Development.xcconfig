@@ -1,0 +1,24 @@
+//
+//  Development.xcconfig
+//  Xiangyu
+//
+//  Created by Jacky Dimon on 2017/10/9.
+//  Copyright © 2017年 Shanghai xianmeng interconnection technology co., LTD
+//
+
+#include "Generator.xcconfig"
+
+XY_SERVICE_HOST = @"http:\/\/47.114.35.13:8001/"
+
+XY_WEB_HOST = @"http:\/\/www.baidu.com"
+
+PRODUCT_DISPLAY_NAME = 喜乡遇-开发版
+
+BUNDLE_ID = com.xixiangyu.app
+
+XY_CHANNLE = @"DEV"
+
+AMAP_KEY = @"a4916565140e7c423403b535966efcf2"
+
+XY_REQ_KEY = @"25c67df374d8ccd8c3abc2bc3e04189c"
+

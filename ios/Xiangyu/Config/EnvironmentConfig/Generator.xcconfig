@@ -1,0 +1,18 @@
+//
+//  Generator.xcconfig
+//  Xiangyu
+//
+//  Created by Jacky Dimon on 2017/10/9.
+//  Copyright © 2017年 Shanghai xianmeng interconnection technology co., LTD
+//
+
+
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.devdebug.xcconfig"
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.uatdebug.xcconfig"
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.prodebug.xcconfig"
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.devrelease.xcconfig"
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.uatrelease.xcconfig"
+#include "Pods/Target Support Files/Pods-Xiangyu/Pods-Xiangyu.prorelease.xcconfig"
+
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) XY_SERVICE_HOST='$(XY_SERVICE_HOST)' XY_WEB_HOST='$(XY_WEB_HOST)' PRODUCT_DISPLAY_NAME='$(PRODUCT_DISPLAY_NAME)' BUNDLE_ID='$(BUNDLE_ID)' XY_CHANNLE='$(XY_CHANNLE)' AMAP_KEY='$(AMAP_KEY)'  XY_REQ_KEY='$(XY_REQ_KEY)'

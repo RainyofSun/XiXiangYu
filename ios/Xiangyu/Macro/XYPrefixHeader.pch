@@ -1,0 +1,64 @@
+//
+//  XYPrefixHeader.pch
+//  Xiangyu
+//
+//  Created by Jacky Dimon on 2017/10/12.
+//  Copyright © 2017年 Shanghai xianmeng interconnection technology co., LTD. All rights reserved.
+//
+
+#ifndef XYPrefixHeader_pch
+#define XYPrefixHeader_pch
+
+#import <YYCategories/YYCategories.h>
+#import <YYText/YYText.h>
+#import <YYModel/YYModel.h>
+#import "XYUserService.h"
+#import "XYAddressService.h"
+#import "XYError.h"
+#import "XYClientExceptionParser.h"
+#import "XYDefines.h"
+#import "XYConstants.h"
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import "NSBundle+Extension.h"
+#import "UIView+Extension.h"
+#import "UIFont+Extension.h"
+#import "XYFontConfig.h"
+#import "XYColorConfig.h"
+#import "XYTextColorConfig.h"
+#import "XYThemeColorConfig.h"
+#import "FBKVOController+Extension.h"
+#import "CYLTabBarController.h"
+#import "XYFMDB.h"
+#import "MBProgressHUD.h"
+#import "IQKeyboardManager.h"
+#import "XYToast.h"
+#import "XYLoadingHUD.h"
+#import "AFHTTPSessionManager.h"
+#import "GKNavigationBarConfigure.h"
+#import <MJRefresh/MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "NSString+Checker.h"
+#import "NSObject+Extension.h"
+
+// MARK: - System Kit
+#import <UIKit/UIKit.h>
+
+
+// MARK: - 七牛短视频 SDK
+#import <PLShortVideoKit/PLShortVideoKit.h>
+
+#import "LSHControl.h"
+// MARK: - Category
+#import "UIView+QNAlert.h"
+#import "NSObject+QNAuth.h"
+#import "UIView+QNAnimation.h"
+#import "UIView+QNCore.h"
+#import "PHAsset+QNCoverPicker.h"
+
+// MARK: - Pods
+#import <SDWebImage/SDWebImage.h>
+
+
+
+#endif /* XYPrefixHeader_pch */
